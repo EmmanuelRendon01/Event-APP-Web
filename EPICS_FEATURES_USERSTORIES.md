@@ -66,4 +66,3 @@
 
 ---
 
-> This document summarizes the main epics, features, and user stories implemented in the Events Web App project.
