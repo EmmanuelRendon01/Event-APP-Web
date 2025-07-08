@@ -40,8 +40,6 @@ export async function remove(url, key, id) {
     if (!res.ok) {
         throw new Error(`Error al eliminar recurso en ${url}/${id}`);
     }
-
-    return true;
 }
 
 /**

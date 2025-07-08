@@ -41,7 +41,8 @@ function renderTable(data) {
       <td>${sub.email}</td>
       <td>${sub.date}</td>
       <td>
-        <button class="btn btn-sm btn-outline-danger btn-delete" data-id="${sub.id}">Eliminar</button>
+        <button type="button" class="btn btn-sm btn-outline-danger btn-delete" data-id="${sub.id}">Eliminar</button>
+
       </td>
     `;
 
@@ -49,11 +50,17 @@ function renderTable(data) {
   });
 
   document.querySelectorAll(".btn-delete").forEach(button => {
-    button.addEventListener("click", async () => {
+    button.addEventListener("click", async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log("Eliminando...");
+
       const id = button.getAttribute("data-id");
       const sure = confirm("¿Estas seguro de eliminar esta suscripcion?");
       if (sure) {
+        
         await remove(URL_DATA, "subscribers", id);
+        console.log("Eliminando...");
         await loadSubscriptions();
       }
     });
