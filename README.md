@@ -9,6 +9,8 @@ A web application for managing and promoting live music events. This project all
 - Juan Esteban Sepulveda
 - Emmanuel Rendon Goez
 
+## Clan RITCHIE
+
 ## Features
 
 - **Event Listing:** View a list of upcoming music events with details and images.
