@@ -1,0 +1,7 @@
+body {
+  background-image: url('../assets/imgs/imgRockExample.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--text-color);
+  font-family: var(--font-main);
+}

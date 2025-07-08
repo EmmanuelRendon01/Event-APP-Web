@@ -1,0 +1,14 @@
+.carousel-custom {
+    max-height: 700px;
+    object-fit: cover;
+    width: object fit;
+
+}
+
+.card-event img {
+  height: 250px;
+}
+
+.card-event {
+  height: 28em;
+}

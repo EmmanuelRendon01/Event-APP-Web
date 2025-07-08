@@ -1,0 +1,158 @@
+<main class="flex-grow-1 p-4 bg-black text-white">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Gestión de Eventos</h2>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCrearEvento" id="btnCreateEvent">
+            + Crear Evento
+        </button>
+    </div>
+
+    <input type="text" class="form-control bg-dark text-white border-light mb-4" id="eventsFilter"
+        placeholder="Filtrar por nombre o ciudad...">
+
+    <div class="table-responsive animate">
+        <table class="table table-dark table-hover align-middle border border-secondary rounded overflow-hidden">
+            <thead class="table-light text-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Ciudad</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tableEvents">
+
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- MODAL CREAR EVENTO -->
+<div class="modal fade" id="modalCrearEvento" tabindex="-1" aria-labelledby="modalCrearEventoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white border border-light rounded-3">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="modalCrearEventoLabel">Crear nuevo evento</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formCreateEvent">
+                    <div class="row">
+                        <!-- Columna izquierda -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nombreEvento" class="form-label">Nombre</label>
+                                <input type="text" class="form-control bg-dark text-white border-light"
+                                    id="nombreEvento" name="title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaEvento" class="form-label">Fecha</label>
+                                <input type="date" class="form-control bg-dark text-white border-light" id="fechaEvento"
+                                    name="date" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ciudadEvento" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control bg-dark text-white border-light"
+                                    id="ciudadEvento" name="location" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="estadoEvento" class="form-label">Estado</label>
+                                <select class="form-select bg-dark text-white border-light" id="estadoEvento"
+                                    name="status" required>
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                    <option value="cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Columna derecha -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="descripcionEvento" class="form-label">Descripción</label>
+                                <textarea class="form-control bg-dark text-white border-light" id="descripcionEvento"
+                                    rows="6" placeholder="Breve descripción del evento..." name="description"
+                                    required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="imagenEvento" class="form-label">Imagen del evento</label>
+                                <input type="file" class="form-control bg-dark text-white border-light" id="image"
+                                    accept="image/*" name="image" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" form="formCreateEvent">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ACTUALIZAR EVENTO -->
+<div class="modal fade" id="modalUpdateEvent" tabindex="-1" aria-labelledby="modalUpdateEventLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-white border border-light rounded-3">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="modalUpdateEventLabel">Actualizar Evento</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formUpdateEvent">
+                    <div class="row">
+                        <!-- Columna izquierda -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="eventTitleUpdate" class="form-label">Nombre</label>
+                                <input type="text" class="form-control bg-dark text-white border-light"
+                                    id="eventTitleUpdate" name="title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="eventDateUpdate" class="form-label">Fecha</label>
+                                <input type="date" class="form-control bg-dark text-white border-light" id="eventDateUpdate"
+                                    name="date" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="eventCity" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control bg-dark text-white border-light"
+                                    id="eventCity" name="location" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="eventStatusUpdate" class="form-label">Estado</label>
+                                <select class="form-select bg-dark text-white border-light" id="eventStatusUpdate"
+                                    name="status" required>
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                    <option value="cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Columna derecha -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="eventDescriptionUpdate" class="form-label">Descripción</label>
+                                <textarea class="form-control bg-dark text-white border-light" id="eventDescriptionUpdate"
+                                    rows="6" placeholder="Breve descripción del evento..." name="description"
+                                    required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="eventImgUpdate" class="form-label">Imagen del evento</label>
+                                <input type="file" class="form-control bg-dark text-white border-light" id="eventImgUpdate"
+                                    accept="image/*" name="image" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" form="formUpdateEvent">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

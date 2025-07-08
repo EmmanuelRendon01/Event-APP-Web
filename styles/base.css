@@ -1,0 +1,46 @@
+@import url('vars.css');
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--primary-color);
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: #fff;
+}
+
+.btn-custom {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  transition: var(--transition-fast);
+}
+
+.btn-custom:hover {
+  background-color: #ff4d7e;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.card-event {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--text-color);
+  transition: var(--transition-fast);
+}
+
+.card-event:hover {
+  transform: scale(1.02);
+}
