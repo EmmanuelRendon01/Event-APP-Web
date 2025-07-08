@@ -33,8 +33,8 @@ loadEvents();
 // CONTACT FORM
 const contactForm = document.querySelector('section form');
 
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+contactForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
   const formData = new FormData(contactForm);
 
   // Campos requeridos con nombres en español
@@ -79,8 +79,9 @@ contactForm.addEventListener('submit', async (e) => {
 // SUBSCRIPTION FORM
 const subscribeForm = document.getElementById('subscribeForm');
 
-subscribeForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+subscribeForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
   const emailInput = subscribeForm.querySelector('input[type="email"]');
   const email = emailInput.value.trim();
 

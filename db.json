@@ -26,13 +26,13 @@
       "image": "gettyimages-632281072-fbac701d-3523-4a82-ae18-2deae436c937.webp"
     },
     {
-      "id": "bc1d",
-      "title": "Gustavo Cerati Viene",
-      "date": "2025-12-02",
-      "location": "Medellín",
-      "description": "sdasd",
-      "image": "images.jpeg",
-      "status": "activo"
+      "title": "Metallica",
+      "date": "2026-07-15",
+      "location": "Bogotá",
+      "status": "activo",
+      "description": "Metallica viene, estoy seguro",
+      "image": "gettyimages-632281072-fbac701d-3523-4a82-ae18-2deae436c937.webp",
+      "id": "BpE-r3R"
     }
   ],
   "subscribers": [
@@ -55,6 +55,16 @@
       "id": "697d",
       "email": "guille@gmail.com",
       "date": "2025-07-08"
+    },
+    {
+      "email": "sepesteban03@gmail.com",
+      "date": "2025-07-08",
+      "id": "GLZ8ioi"
+    },
+    {
+      "email": "sepesteban02@gmail.com",
+      "date": "2025-07-08",
+      "id": "oeghGHx"
     }
   ],
   "contactMessages": [
@@ -63,13 +73,6 @@
       "name": "Guillermo García",
       "email": "guille@gmail.com",
       "message": "Buenos días",
-      "date": "2025-07-08"
-    },
-    {
-      "id": "5354",
-      "name": "Guillermo García",
-      "email": "guille@gmail.com",
-      "message": "sadasd",
       "date": "2025-07-08"
     }
   ]

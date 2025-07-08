@@ -1,10 +1,15 @@
-/* Estilo base para pantallas grandes */
 .main-admin {
   height: 100vh;
+  overflow: hidden;
+}
+
+.admin-footer {
+  display: none;
 }
 
 .admin-sidebar {
   width: 15em;
+  flex-shrink: 0;
 }
 
 .admin-footer {
@@ -15,8 +20,14 @@
   cursor: pointer;
   background-color: var(--primary-color);
   border-radius: 5px;
-  transform: translate(5px);
-  transition: transform 0.5s ease;
+  transform: translateX(5px);
+  transition: transform 0.3s ease;
+}
+
+main {
+  overflow-y: auto;
+  height: 100vh;
+  padding: 1rem;
 }
 
 main h2 {
@@ -24,26 +35,33 @@ main h2 {
 }
 
 .card-dashboard {
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
   border: none;
   border-radius: 15px;
 }
 
 .card-dashboard:hover {
   cursor: pointer;
-  transform: translateY(5px);
+  transform: translateY(-5px);
+}
+
+.table-responsive {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .table {
   border-radius: 10px;
+  margin-bottom: 0;
 }
-
-/* ///////////////////////////////////////////////////////////////////////////////// */
 
 .table thead th {
   background-color: var(--primary-color);
   color: white;
   border: none;
+  white-space: nowrap;
+  padding: 12px 8px;
 }
 
 .table tbody tr:hover {
@@ -51,7 +69,16 @@ main h2 {
   transition: background-color 0.3s ease;
 }
 
-input#filtroCorreo::placeholder {
+.table td {
+  padding: 12px 8px;
+  vertical-align: middle;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+input#filtroCorreo::placeholder,
+input#eventsFilter::placeholder,
+input#emailFilter::placeholder,
+input#filterMessages::placeholder {
   color: #aaa;
 }
 
@@ -59,18 +86,283 @@ button.btn-outline-danger {
   border-width: 1px;
 }
 
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
 @media (max-width: 768px) {
-  .update-event-btn {
-    margin-bottom: 15px;
-  }
-
   .main-admin {
-    height: 87.7vh;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
-
 
   .admin-sidebar {
     display: none;
   }
 
+  .admin-footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--secondary-color) !important;
+    padding: 0.4rem 0.2rem;
+    height: 40px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .admin-footer .nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.3rem;
+    height: 100%;
+    align-items: center;
+  }
+
+  .admin-footer .nav-link {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.4rem;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
+    min-width: fit-content;
+  }
+
+  main {
+    height: calc(100vh - 60px);
+    padding: 0.5rem;
+    padding-bottom: 80px;
+  }
+
+  .table-responsive {
+    font-size: 0.85rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 4px;
+    font-size: 0.8rem;
+  }
+
+  .update-event-btn {
+    margin-bottom: 8px;
+    width: 100%;
+    font-size: 0.75rem;
+  }
+
+  .delete-event-btn {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+
+  .table th:nth-child(3),
+  .table td:nth-child(3) {
+    display: none;
+  }
+
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-lg {
+    max-width: none;
+  }
+
+  .col-md-6 {
+    margin-bottom: 1rem;
+  }
+
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .w-50 {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .admin-footer {
+    height: 40px;
+    padding: 0.3rem 0.1rem;
+  }
+
+  .admin-footer .nav-link {
+    font-size: 0.63rem;
+    padding: 0.25rem 0.3rem;
+    line-height: 1.1;
+  }
+
+  main {
+    height: calc(100vh - 65px);
+    padding-bottom: 85px;
+  }
+  
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    display: none;
+  }
+
+  .table-responsive {
+    font-size: 0.75rem;
+  }
+
+  .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .table td:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .update-event-btn,
+  .delete-event-btn {
+    margin-bottom: 0;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--gray-color);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 46, 99, 0.3);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-container {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gray-color);
+}
+
+.error-container h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.animate {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: #ff4d7e;
+}
+
+@media (max-width: 480px) {
+  .admin-footer .nav-link {
+    font-size: 0.70rem;
+    padding: 0.2rem 0.25rem;
+  }
+  
+  .admin-footer {
+    height: 40px;
+  }
+  
+  main {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-footer .nav-link {
+    font-size: 0.63rem;
+    padding: 0.2rem 0.25rem;
+  }
+  
+  .admin-footer {
+    height: 40px;
+  }
+  
+  main {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media (max-width: 380px) {
+  .admin-footer .nav-link {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.25rem;
+  }
+  
+  .admin-footer {
+    height: 40px;
+  }
+  
+  main {
+    height: calc(100vh - 70px);
+  }
+}
+
+@media (max-width: 361px) {
+  .admin-footer .nav-link {
+    font-size: 0.56rem;
+    padding: 0.2rem 0.25rem;
+  }
+  
+  .admin-footer {
+    height: 40px;
+  }
+  
+  main {
+    height: calc(100vh - 70px);
+  }
 }
