@@ -2,6 +2,13 @@
 
 A web application for managing and promoting live music events. This project allows users to view upcoming events, subscribe for updates, send contact messages, and provides an admin panel for event and user management.
 
+## Members
+
+- Andres Felipe Marin Patiño
+- Juan Camilo Sanchez Mendez
+- Juan Esteban Sepulveda
+- Emmanuel Rendon Goez
+
 ## Features
 
 - **Event Listing:** View a list of upcoming music events with details and images.
