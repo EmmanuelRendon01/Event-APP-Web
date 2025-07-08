@@ -64,5 +64,3 @@
 - **User Story 5.1.1:** As a developer, I want to use localStorage for session management so that admin access is restricted (for demo purposes).
 - **User Story 5.1.2:** As a developer, I want to redirect unauthorized users from protected pages so that sensitive data is not exposed.
 
----
-
